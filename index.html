@@ -8,6 +8,18 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <div id="counter">
+    Counter: {{ counter }}
+  </div>
 </body>
+<script>
+  const Counter = {
+    data(){
+      return {
+        counter : 0
+      }
+    }
+  }
+  Vue.createApp(Counter).mount('#counter')
+</script>
 </html>
