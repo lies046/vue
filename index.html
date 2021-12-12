@@ -8,18 +8,17 @@
   <title>Document</title>
 </head>
 <body>
-  <div id="counter">
-    Counter: {{ counter }}
-  </div>
+  <div id="app"></div>
 </body>
 <script>
-  const Counter = {
-    data(){
-      return {
-        counter : 0
-      }
+  const app = Vue.createApp({
+    data() {
+      return {count: 4}
     }
-  }
-  Vue.createApp(Counter).mount('#counter')
+  })
+  const vm = app.mount('#app')
+  vm.count = 5
+  console.log(vm.$data.count)
+  console.log(vm.count)
 </script>
 </html>
