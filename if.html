@@ -8,18 +8,43 @@
   <title>Document</title>
 </head>
 <body>
-  <div id="conditional-rendering">
-    <span v-if="seen">Now you see me</span>
-  </div>
+<div id="watch-example">
+  <p>
+    Ask a yes/no question:
+    <input v-model="question">
+  </p>
+  <p>{{ answer }}</p>
+</div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
 <script>
-  const ConditionalRendering = {
-    data(){
-      return{
-        seen: false
+const watchExampleVM = Vue.createApp({
+  data(){
+    return {
+      question: '',
+      answer: 'Question usually contain a question mark. ;-)'
+    }
+  },
+  watch: {
+    question(newQuestion, oldQuestion){
+      if(newQuestion.indexOf('?') > -1){
+        this.getAnswer()
       }
     }
+  },
+  methods:{
+    getAnswer(){
+      this.answer = 'Thinking....'
+      axios
+      .get('https://yesno.wtf/api')
+      .then(response => {
+        this.answer = response.data.answer
+      })
+      .catch(error => {
+        this.answer = 'Error colud not reach the API' + error
+      })
+    }
   }
-  Vue.createApp(ConditionalRendering).mount('#conditional-rendering')
+}).mount('#watch-example')
 </script>
 </html>
