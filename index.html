@@ -4,27 +4,34 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://unpkg.com/vue@next"></script>
   <title>Document</title>
 </head>
 <body>
-  <div id="app"></div>
-  <button @click="increment">up vote</button>
+  <div id="computed-basics">
+    <p>Has published books:</p>
+    <span>{{ publishedBooksMessage }}</span>
+  </div>
 </body>
+<script src="https://unpkg.com/vue@next"></script>
 <script>
-  const app = Vue.createApp({
-    data() {
-      return {count: 4}
+  Vue.createApp({
+    data(){
+      return{
+        author: {
+          name: 'Joe Doe',
+          books: [
+            'Vue 2 - Advanced Guide',
+            'Vue 3 - Basic Guide',
+            'Vue 4 - The Mystery'
+          ]
+        }
+      }
     },
-    methods:{
-      increment(){
-        this.count++
+    computed:{
+      publishedBooksMessage(){
+        return this.author.books.length > 2 ? 'Yes' : 'No'
       }
     }
-  })
-  const vm = app.mount('#app')
-  console.log(vm.count)
-  vm.increment()
-  console.log(vm.count)
+  }).mount('#computed-basics')
 </script>
 </html>
