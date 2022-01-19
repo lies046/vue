@@ -5,33 +5,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
-  <div id="computed-basics">
-    <p>Has published books:</p>
-    <span>{{ publishedBooksMessage }}</span>
+  <div id="counter">
+    Cunter: {{ counter }}
   </div>
 </body>
-<script src="https://unpkg.com/vue@next"></script>
 <script>
-  Vue.createApp({
+  const Counter = {
     data(){
-      return{
-        author: {
-          name: 'Joe Doe',
-          books: [
-            'Vue 2 - Advanced Guide',
-            'Vue 3 - Basic Guide',
-            'Vue 4 - The Mystery'
-          ]
-        }
-      }
-    },
-    computed:{
-      publishedBooksMessage(){
-        return this.author.books.length > 2 ? 'Yes' : 'No'
+      return {counter: 0
       }
     }
-  }).mount('#computed-basics')
+  }
+  Vue.createApp(Counter).mount('#counter')
 </script>
 </html>
