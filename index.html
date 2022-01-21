@@ -8,22 +8,20 @@
   <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
-  <div id="counter">
-    Cunter: {{ counter }}
+  <div id="bind-attribute">
+    <span v-bind:title="message">
+      こんにちは
+    </span>
   </div>
 </body>
 <script>
-  const Counter = {
+  const AttributeBinding = {
     data(){
-      return {counter: 0
+      return{
+        message: 'こんばんは' + new Date().toLocaleString()
       }
-    },
-    mounted(){
-      setInterval(()=>{
-        this.counter++
-      },1000)
     }
   }
-  Vue.createApp(Counter).mount('#counter')
+  Vue.createApp(AttributeBinding).mount('#bind-attribute')
 </script>
 </html>
