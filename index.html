@@ -8,25 +8,27 @@
   <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
-  <div id="bind-attribute">
-    <span v-bind:title="message">
-      こんにちは
-    </span>
+  <div id="event-handling">
+    <p>{{ message }}</p>
+    <button v-on:click="reverseMessage">反転</button>
   </div>
 </body>
 <script>
-  const AttributeBinding = {
+  const EventHandling = {
     data(){
-      return{
-        message: 'こんばんは' + new Date().toLocaleString()
+      return {
+        message: 'Hello World'
       }
     },
-    mounted(){
-      setInterval(()=>{
-        this.counter++
-      },1000)
+    methods: {
+      reverseMessage(){
+        this.message = this.message
+        .split('')
+        .reverse()
+        .join('')
+      }
     }
   }
-  Vue.createApp(AttributeBinding).mount('#bind-attribute')
+  Vue.createApp(EventHandling).mount('#event-handling')
 </script>
 </html>
