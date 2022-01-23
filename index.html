@@ -10,7 +10,7 @@
 <body>
   <div id="event-handling">
     <p>{{ message }}</p>
-    <button v-on:click="reverseMessage">反転</button>
+    <input v-model="message">
   </div>
 </body>
 <script>
@@ -18,14 +18,6 @@
     data(){
       return {
         message: 'Hello World'
-      }
-    },
-    methods: {
-      reverseMessage(){
-        this.message = this.message
-        .split('')
-        .reverse()
-        .join('')
       }
     }
   }
