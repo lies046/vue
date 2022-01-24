@@ -9,15 +9,14 @@
 </head>
 <body>
   <div id="event-handling">
-    <p>{{ message }}</p>
-    <input v-model="message">
+    <span v-if="seen">見えてる</span>
   </div>
 </body>
 <script>
   const EventHandling = {
     data(){
       return {
-        message: 'Hello World'
+        seen: true
       }
     }
   }
