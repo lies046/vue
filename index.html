@@ -11,7 +11,8 @@
   <div id="list-rendering">
     <ol>
       <li v-for="todo in todos">
-        {{ todo.text }}
+        {{ todo.food }}
+        {{todo.price}}
       </li>
     </ol>
     </div>
@@ -21,9 +22,9 @@
     data(){
       return{
         todos: [
-          {text: 'ラーメン'},
-          {text: 'カレー'},
-          {text: '焼肉'}
+          {food: 'ラーメン', price :'1,000円'},
+          {food: 'カレー', price: '800円'},
+          {food: '焼肉', price: '2,000円'}
         ]
       }
     }
