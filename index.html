@@ -8,18 +8,26 @@
   <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
-  <div id="event-handling">
-    <span v-if="seen">見えてる</span>
-  </div>
+  <div id="list-rendering">
+    <ol>
+      <li v-for="todo in todos">
+        {{ todo.text }}
+      </li>
+    </ol>
+    </div>
 </body>
 <script>
-  const EventHandling = {
+  const ListRendering = {
     data(){
-      return {
-        seen: false
+      return{
+        todos: [
+          {text: 'ラーメン'},
+          {text: 'カレー'},
+          {text: '焼肉'}
+        ]
       }
     }
   }
-  Vue.createApp(EventHandling).mount('#event-handling')
+  Vue.createApp(ListRendering).mount('#list-rendering')
 </script>
 </html>
