@@ -8,6 +8,23 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <div id="todo">
+  <ol>
+    <todo-item></todo-item> 
+  </ol>
+</div>
 </body>
+<script>
+  const TodoItem = {
+    template: `<li>This is a todo</li>`
+  }
+
+  const app = Vue.createApp({
+    components: {
+      TodoItem
+    }
+  })
+
+  app.mount('#todo')
+</script>
 </html>
