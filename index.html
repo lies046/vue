@@ -9,26 +9,17 @@
 </head>
 <body>
   <div id="list-rendering">
-    <ol>
-      <li v-for="todo in todos">
-        {{ todo.food }}
-        {{todo.price}}
-      </li>
-    </ol>
-    </div>
+  </div>
 </body>
 <script>
-  const ListRendering = {
+  const app =  Vue.createApp({
     data(){
-      return{
-        todos: [
-          {food: 'ラーメン', price :'1,000円'},
-          {food: 'カレー', price: '800円'},
-          {food: '焼肉', price: '2,000円'}
-        ]
-      }
+      return { count: 1}
+    },
+    created(){
+      console.log('count is:' + this.count)
     }
-  }
-  Vue.createApp(ListRendering).mount('#list-rendering')
+  })
+  app.mount('#list-rendering')
 </script>
 </html>
