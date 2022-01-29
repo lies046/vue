@@ -8,18 +8,23 @@
   <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
-  <div id="list-rendering">
+  <div id="app">
+    {{count}}
+    <button @click="increment">カウント</button>
   </div>
 </body>
 <script>
-  const app =  Vue.createApp({
+  const app = Vue.createApp({
     data(){
-      return { count: 1}
+      return {count: 0}
     },
-    created(){
-      console.log('count is:' + this.count)
+    methods:{
+      increment(){
+        this.count++
+      }
     }
   })
-  app.mount('#list-rendering')
+
+  app.mount('#app')
 </script>
 </html>
