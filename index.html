@@ -8,30 +8,42 @@
   <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
-  <div id="computed-basics">
-    <p>持っている本:</p>
-    <span>{{ publishedBooksMessage}}</span>
+  <div id="watch-example">
+    <p>「はい」か「いいえ」
+    <input v-model="question">
+    </p>
+    <p>{{ answer }}</p>
   </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
 <script>
-  const app = Vue.createApp({
+  const watchExampleVM = Vue.createApp({
     data(){
       return {
-        author:{
-          name: 'John Doe',
-          books: [
-       
-          ]
+        question: '',
+        answer: '質問文の最後につける記号は何だ？'
+      }
+    },
+    watch: {
+      question(newQuestion, oldQuestion){
+        if(newQuestion.indexOf('?') > -1){
+          this.getAnswer()
         }
       }
     },
-    computed:{
-      publishedBooksMessage(){
-        return this.author.books.length > 0 ? 'Yes' : 'No'
+    methods: {
+      getAnswer(){
+        this.answer = 'Thinking...'
+        axios
+        .get('https://yesno.wtf/api')
+        .then(response => {
+          this.answer = response.data.answer
+        })
+        .catch(error => {
+          this.answer = 'Error!' + error
+        })
       }
-      }
-  })
-
-  app.mount('#computed-basics')
+    }
+  }).mount('#watch-example')
 </script>
 </html>
