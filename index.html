@@ -8,23 +8,30 @@
   <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
-  <div id="app">
-    {{count}}
-    <button @click="increment">カウント</button>
+  <div id="computed-basics">
+    <p>持っている本:</p>
+    <span>{{ publishedBooksMessage}}</span>
   </div>
 </body>
 <script>
   const app = Vue.createApp({
     data(){
-      return {count: 0}
-    },
-    methods:{
-      increment(){
-        this.count++
+      return {
+        author:{
+          name: 'John Doe',
+          books: [
+       
+          ]
+        }
       }
-    }
+    },
+    computed:{
+      publishedBooksMessage(){
+        return this.author.books.length > 0 ? 'Yes' : 'No'
+      }
+      }
   })
 
-  app.mount('#app')
+  app.mount('#computed-basics')
 </script>
 </html>
