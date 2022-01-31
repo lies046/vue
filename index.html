@@ -14,6 +14,9 @@
     </p>
     <p>{{ answer }}</p>
   </div>
+  <div id="demo">
+    {{ fullName}}
+  </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
 <script>
@@ -45,5 +48,19 @@
       }
     }
   }).mount('#watch-example')
+
+  const vm = Vue.createApp({
+    data(){
+      return{
+        firstName: 'Foo',
+        lastName: 'Bar',
+      }
+    },
+    computed: {
+      fullName(){
+        return this.firstName + ' ' + this.lastName 
+      }
+    }
+  }).mount('#demo')
 </script>
 </html>
