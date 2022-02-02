@@ -8,27 +8,20 @@
   <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
-  <div
-  id="app"
-  :class="classObject">
+  <div id="app" :style="styleObject">
+    <p>test</p>
   </div>
-</body>
   <script>
     Vue.createApp({
       data(){
-        return{
-          isActive: true,
-          hasError: null
-        }
-      },
-      computed: {
-        classObject(){
-          return {
-            active: this.isActive && !this.error,
-            'text-danger': this.error && this.error.type == 'fatal'
-          }
+      return{
+        styleObject: {
+          color: 'red',
+          fontSize: '13px'
         }
       }
+    }
     }).mount('#app')
   </script>
+</body>
 </html>
