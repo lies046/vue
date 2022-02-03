@@ -9,14 +9,17 @@
 </head>
 <body>
   <div id="app">
-  <h1 v-if="awesome">Vue is awesome</h1>
-  <h1 v-else>Oh no</h1>
-</div>
+  <template v-if="ok">
+    <h1>Title</h1>
+    <p>Paragtaph 1</p>
+    <p>Paragraph 2</p>
+  </template>
+  </div>
   <script>
     Vue.createApp({
       data(){
         return {
-          awesome: true
+          ok: false
         }
       }
     }).mount('#app')
