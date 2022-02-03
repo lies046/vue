@@ -9,11 +9,7 @@
 </head>
 <body>
   <div id="app">
-  <template v-if="ok">
-    <h1>Title</h1>
-    <p>Paragtaph 1</p>
-    <p>Paragraph 2</p>
-  </template>
+  <h1 v-show="ok">Hello</h1>
   </div>
   <script>
     Vue.createApp({
