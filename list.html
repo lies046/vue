@@ -13,6 +13,11 @@
       {{ item.message }}
     </li>
   </ul>
+  <ul id="array-with-index">
+    <li v-for="(item, index) in items">
+      {{parentMessage}} - {{ index }} - {{ item.message }}
+    </li>
+  </ul>
   <script>
     Vue.createApp({
       data(){
@@ -21,6 +26,15 @@
         }
       }
     }).mount('#array-rendering')
+
+    Vue.createApp({
+      data(){
+        return {
+          parentMessage: 'Parent',
+          items: [{message: 'Foo'}, {message: 'Bar'}]
+        }
+      }
+    }).mount('#array-with-index')
   </script>
 </body>
 </html>
