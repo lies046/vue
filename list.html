@@ -19,8 +19,8 @@
     </li>
   </ul>
   <ul id="v-for-object" class="demo">
-    <li v-for="value in myObject">
-      {{ value }}
+    <li v-for="(value, name) in myObject">
+      {{ name}}:{{ value }}
     </li>
   </ul>
   <script>
