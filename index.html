@@ -20,6 +20,11 @@
       return{
         message: 'こんばんは' + new Date().toLocaleString()
       }
+    },
+    mounted(){
+      setInterval(()=>{
+        this.counter++
+      },1000)
     }
   }
   Vue.createApp(AttributeBinding).mount('#bind-attribute')
