@@ -19,7 +19,7 @@
     </li>
   </ul>
   <ul id="v-for-object" class="demo">
-    <li v-for="(value, name, index) in myObject">
+    <li v-for="(value, name, index) in myObject" :key="index">
       {{ index + 1 }}. {{ name}}:{{ value }}
     </li>
   </ul>
