@@ -12,6 +12,10 @@
     <button @click="counter += 1">Add 1</button>
     <p>{{ counter }}回</p>
   </div>
+
+  <div id="event-with-method">
+    <button @click="greet">Greet</button>
+  </div>
   <script>
     Vue.createApp({
       data(){
@@ -20,6 +24,23 @@
         }
       }
     }).mount('#basic-event')
+
+    Vue.createApp({
+      data(){
+        return{
+          name: 'Vue.js'
+        }
+      },
+      methods:{
+        greet(event){
+          alert('Hello ' + this.name + '!')
+
+          if(event){
+            alert(event.target.tagName)
+          }
+        }
+      }
+    }).mount('#event-with-method')
   </script>
 </body>
 </html>
