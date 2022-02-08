@@ -19,6 +19,7 @@
   <div id="inline-handler">
     <button @click="say('hi')">Say hi</button>
     <button @click="say('what')">Say what</button>
+    <button @click="warn('まだ', $event)">submit</button>
   </div>
   <script>
     Vue.createApp({
@@ -49,6 +50,12 @@
     Vue.createApp({
       methods:{
         say(message){
+          alert(message)
+        },
+        warn(message, event){
+          if(event){
+            event.preventDefault()
+          }
           alert(message)
         }
       }
