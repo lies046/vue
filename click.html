@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@next"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="basic-event">
+    <button @click="counter += 1">Add 1</button>
+    <p>{{ counter }}回</p>
+  </div>
+  <script>
+    Vue.createApp({
+      data(){
+        return {
+          counter: 0
+        }
+      }
+    }).mount('#basic-event')
+  </script>
+</body>
+</html>
