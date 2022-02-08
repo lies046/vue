@@ -16,6 +16,10 @@
   <div id="event-with-method">
     <button @click="greet">Greet</button>
   </div>
+  <div id="inline-handler">
+    <button @click="say('hi')">Say hi</button>
+    <button @click="say('what')">Say what</button>
+  </div>
   <script>
     Vue.createApp({
       data(){
@@ -41,6 +45,14 @@
         }
       }
     }).mount('#event-with-method')
+
+    Vue.createApp({
+      methods:{
+        say(message){
+          alert(message)
+        }
+      }
+    }).mount('#inline-handler')
   </script>
 </body>
 </html>
