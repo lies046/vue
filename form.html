@@ -8,6 +8,18 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <div id="app">
+    <p>{{text}}</p>
+  <textarea v-model="text"></textarea>
+</div>
+<script>
+  Vue.createApp({
+    data(){
+      return {
+        text: ''
+      }
+    }
+  }).mount('#app')
+</script>
 </body>
 </html>
