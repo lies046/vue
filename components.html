@@ -8,36 +8,25 @@
   <title>Document</title>
 </head>
 <body>
-  <div id="todo">
-  <ol>
-    <todo-item
-    v-for="item in groceryList"
-    v-bind:todo="item"
-    v-bind:key="item.id"></todo-item> 
-  </ol>
-</div>
+  <div id="components-demo">
+    <button-counter></button-counter>
+  </div>
 </body>
 <script>
-  const TodoItem = {
-    props: ['todo'],
-    template: `<li>{{todo.text}}</li>`
-  }
+  const app = Vue.createApp({})
 
-  const TodoList = {
+  app.component('button-counter', {
     data(){
       return {
-        groceryList: [
-          {id:0, text: '野菜'},
-          {id:1, text: 'チーズ'},
-          {id:2, text: '肉'}
-        ]
+        count: 0
       }
     },
-    components: {
-      TodoItem
-    }
-  }
-  const app = Vue.createApp(TodoList)
-  app.mount('#todo')
+    template: `
+    <button @click="count++">
+      You clicked me {{ count }} times.
+    </button>
+    `
+  })
+  app.mount('#components-demo')
 </script>
 </html>
