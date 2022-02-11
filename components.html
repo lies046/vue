@@ -10,6 +10,16 @@
 <body>
   <div id="components-demo">
     <button-counter></button-counter>
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+  </div>
+
+  <div id="blog-posts-demo" class="demo"> 
+    <blog-post
+    v-for="post in posts"
+    :key="post.id"
+    :title="post.title"
+    ></blog-post>
   </div>
 </body>
 <script>
@@ -28,5 +38,25 @@
     `
   })
   app.mount('#components-demo')
+
+  const App = {
+    data(){
+      return {
+        posts: [
+          { id: 1, title: 'MY journey with vue'},
+          { id: 2, title: 'Blogging with Vue'},
+          { id: 3, title: 'Wht Vue is so fun'}
+        ]
+      }
+    }
+  }
+
+  const app2 = Vue.createApp(App)
+
+  app2.component('blog-post',{
+    props: ['title'],
+    template: `<h4>{{ title }}</h4>`
+  })
+  app2.mount('#blog-posts-demo')
 </script>
 </html>
