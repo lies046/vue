@@ -20,7 +20,7 @@
     v-for="post in posts"
     :key="post.id"
     :title="post.title"
-    @enlarge-text="postFontSize += 0.1"
+    @enlarge-text="postFontSize += $event"
     ></blog-post>
   </div>
 </div> 
@@ -63,7 +63,7 @@
     template: `
     <div class="blog-post">
     <h4>{{ title }}</h4>
-    <button @click="$emit('enlargeText')">拡大</button>
+    <button @click="$emit('enlargeText', 0.1)">拡大</button>
     </div>
     `
   })
