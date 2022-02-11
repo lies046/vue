@@ -14,13 +14,16 @@
     <button-counter></button-counter>
   </div>
 
-  <div id="blog-posts-demo" class="demo"> 
+  <div id="blog-posts-demo" class="demo">
+    <div :style="{ fontSize: postFontSize + 'em'}">
     <blog-post
     v-for="post in posts"
     :key="post.id"
     :title="post.title"
+    @enlarge-text="postFontSize += 0.1"
     ></blog-post>
   </div>
+</div> 
 </body>
 <script>
   const app = Vue.createApp({})
@@ -46,7 +49,8 @@
           { id: 1, title: 'MY journey with vue'},
           { id: 2, title: 'Blogging with Vue'},
           { id: 3, title: 'Wht Vue is so fun'}
-        ]
+        ],
+        postFontSize: 1
       }
     }
   }
@@ -55,7 +59,13 @@
 
   app2.component('blog-post',{
     props: ['title'],
-    template: `<h4>{{ title }}</h4>`
+    emits: ['enlargeText'],
+    template: `
+    <div class="blog-post">
+    <h4>{{ title }}</h4>
+    <button @click="$emit('enlargeText')">拡大</button>
+    </div>
+    `
   })
   app2.mount('#blog-posts-demo')
 </script>
