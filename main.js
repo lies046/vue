@@ -18,7 +18,13 @@ var todoStorage = {
 const app = Vue.createApp({
   data() {
     return {
-      todos: []
+      todos: [],
+      options: [
+        { value: -1, label: 'すべて'},
+        { value: 0, label: '作業中'},
+        { value:1, label: '完了'}
+      ],
+      current: -1
     }
   }, 
   methods: {
