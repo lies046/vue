@@ -34,6 +34,13 @@ const app = Vue.createApp({
         state: 0
       })
       comment.value = ''
+    },
+    doChangeState(item){
+      item.state = item.state ? 0 : 1
+    },
+    doRemove(item){
+      let index = this.todos.indexOf(item)
+      this.todos.splice(index, 1)
     }
   },
   watch:{
