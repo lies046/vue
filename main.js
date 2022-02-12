@@ -16,10 +16,12 @@ var todoStorage = {
 }
 
 const app = Vue.createApp({
-  data: {
-
+  data() {
+    return {
+      todos: []
+    }
   }, 
   methods: {
 
   }
-})
+}).mount('#app')

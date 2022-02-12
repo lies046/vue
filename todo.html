@@ -16,10 +16,29 @@
           <th class="id">ID</th>
           <th class="comment">コメント</th>
           <th class="state">状態</th>
-          <th class="button">-</th>
+          <th class="button"></th>
         </tr>
       </thead>
+      <tbody>
+        <tr v-for="todo in todos"
+        :key="todo.id"
+        >
+        <th>{{ todo.id }}</th>
+        <td>{{ todo.comment }}</td>
+        <td class="state">
+          <button>{{ item.state }}</button>
+        </td>
+        <td class="button">
+          <button>削除</button>
+        </td>
+        </tr>
+      </tbody>
     </table>
+    <h2>新しい作業の追加</h2>
+    <form class="add-form" v-on:submit.prevent="doAdd">
+      <input type="text" ref="comment">
+      <button type="submit">追加</button>
+    </form>
   </div>
   <script src="main.js"></script>
 </body>
