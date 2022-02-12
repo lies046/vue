@@ -4,73 +4,23 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css">
   <script src="https://unpkg.com/vue@next"></script>
   <title>Document</title>
 </head>
 <body>
-  <div id="todo-list-example">
-    <form v-on:submit.prevent="addNewTodo">
-      <label for="new-todo">todo追加</label>
-      <input
-      v-model="newTodoText"
-      id="new-todo"
-      placeholder="例：トイレットペーパー買う">
-      <button>追加</button>
-    </form>
-    <ul>
-      <todo-item
-      v-for="(todo, index) in todos"
-      :key="todo.id"
-      :title="todo.title"
-      @remove="todos.splice(index, 1)"
-      ></todo-item>
-    </ul>
+  <div id="app">
+    <table>
+      <thead>
+        <tr>
+          <th class="id">ID</th>
+          <th class="comment">コメント</th>
+          <th class="state">状態</th>
+          <th class="button">-</th>
+        </tr>
+      </thead>
+    </table>
   </div>
-  <script>
-    const app = Vue.createApp({
-      data(){
-        return {
-          newTodoText: '',
-          todos: [
-            {
-              id: 1,
-              title: '競合調査する'
-            },
-            {
-              id: 2,
-              title: '設計書作成'
-            },
-            {
-              id: 3,
-              title: 'ER図作成'
-            }
-          ],
-          nextTodoId: 4
-        }
-      },
-      methods: {
-        addNewTodo(){
-          this.todos.push({
-            id: this.nextTodoId++,
-            title: this.newTodoText
-          })
-          this.newTodoText = ''
-        }
-      }
-    })
-    app.component('todo-item', {
-      template: `
-        <li>
-          {{ title }}
-          <button @click="$emit('remove')">削除</button>
-        </li>
-      `
-      ,
-      props: ['title'],
-      emits: ['remove']
-    })
-
-    app.mount('#todo-list-example')
-  </script>
+  <script src="main.js"></script>
 </body>
 </html>
