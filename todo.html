@@ -23,9 +23,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="todo in todos"
+        <tr v-for="todo in computedTodos"
         :key="todo.id"
         >
+        {{ computedTodos.length }} 件を表示中
         <th>{{ todo.id }}</th>
         <td>{{ todo.comment }}</td>
         <td class="state">

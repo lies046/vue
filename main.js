@@ -59,5 +59,12 @@ const app = Vue.createApp({
   },
   created(){
     this.todos = todoStorage.fetch()
+  },
+  computed:{
+    computedTodos(){
+      return this.todos.filter(function(el){
+        return this.current < 0 ? true : this.current === el.state
+      })
+    }
   }
 }).mount('#app')
