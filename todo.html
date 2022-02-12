@@ -13,6 +13,7 @@
     <label v-for="label in options">
       <input type="radio" v-model="current" v-bind:value="label.value">{{ label.label}}
     </label>
+    {{ computedTodos.length }} 件を表示中
     <table>
       <thead>
         <tr>
@@ -26,11 +27,10 @@
         <tr v-for="todo in computedTodos"
         :key="todo.id"
         >
-        {{ computedTodos.length }} 件を表示中
         <th>{{ todo.id }}</th>
         <td>{{ todo.comment }}</td>
         <td class="state">
-          <button @click="dochangeState(todo)">{{ item.state }}</button>
+          <button @click="doChangeState(todo)">{{ labels[todo.state] }}</button>
         </td>
         <td class="button">
           <button @click.ctrl="doRemove(todo)">削除</button>
@@ -38,6 +38,7 @@
         </tr>
       </tbody>
     </table>
+    <p>※削除ボタンはコントロールキーを押しながらクリックして下さい</p>
     <h2>新しい作業の追加</h2>
     <form class="add-form" v-on:submit.prevent="doAdd">
       <input type="text" ref="comment">
