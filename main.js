@@ -43,5 +43,8 @@ const app = Vue.createApp({
       },
       deep: true
     }
+  },
+  created(){
+    this.todos = todoStorage.fetch()
   }
 }).mount('#app')
